@@ -1,17 +1,29 @@
-import { useFetch } from '../../util/api';
+import { styled } from 'styled-components';
+import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 
 function Home() {
-  const { data, loading } = useFetch('http://localhost:8080');
-
-  if (loading) return <div>Loading...</div>;
-
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <p>{data.body}</p>
-      <h1>Hello</h1>
-    </div>
+    <Container>
+      <Header />
+      <Content>
+        <div>캐러셀</div>
+        <div>알고리즘 결과</div>
+        <Footer />
+      </Content>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  width: 100%;
+`;
+
+const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1280px;
+`;
 
 export default Home;

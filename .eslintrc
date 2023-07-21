@@ -26,7 +26,16 @@
     "react/jsx-pascal-case": "warn",
     "react/destructuring-assignment": "warn",
     "react/no-direct-mutation-state": "warn",
-    "react/jsx-key": "warn"
+    "react/jsx-key": "warn",
+    "import/no-unresolved": "off"
   },
-  "ignorePatterns": ["node_modules/"]
+  "ignorePatterns": ["node_modules/"],
+  "settings": {
+    // import/resolver` 는 `eslint-plugin-import` 의 경로 설정 옵션
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
 }

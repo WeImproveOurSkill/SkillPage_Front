@@ -36,7 +36,7 @@ function Login() {
       </form>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
-      {data && <div>Logged in as: {data.email}</div>}
+      {data && <div>Logged in as: {data.userIdentifier}</div>}
     </div>
   );
 }

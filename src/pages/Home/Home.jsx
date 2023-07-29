@@ -1,29 +1,34 @@
 import { styled } from 'styled-components';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
+import MainImg from 'asset/HomePhoto.png';
 
 function Home() {
   return (
-    <Container>
+    <div>
       <Header />
       <Content>
-        <div>캐러셀</div>
-        <div>알고리즘 결과</div>
-        <Footer />
+        <div></div>
+        <div>
+          <img src={MainImg} alt='MainImg'></img>
+          {/* <div>오늘의 브랜드</div>
+          <div>최근 본 상품과 함께 볼만한 상품</div>
+          <div>타임딜</div> */}
+        </div>
       </Content>
-    </Container>
+      <Footer />
+    </div>
   );
 }
 
-const Container = styled.div`
-  width: 100%;
-`;
+// const Container = styled.div`
+//   width: 100%;
+// `;
 
 const Content = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1280px;
 `;
 
 export default Home;

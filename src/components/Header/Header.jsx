@@ -55,7 +55,7 @@ function Header() {
 
 const Container = styled.header`
   width: 100%;
-  min-height: 186px;
+  min-height: 120px;
 `;
 
 const Box = styled.div`

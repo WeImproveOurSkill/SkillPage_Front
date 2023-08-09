@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 // import { useState } from 'react';
-import useLoginLogic from '/Users/ihyeondong/Desktop/skillPage/skillPage_Front/src/util/useLoginLogic.js';
+import useLoginLogic from '../../util/useLoginLogic';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MainImg from 'asset/logo192.png';

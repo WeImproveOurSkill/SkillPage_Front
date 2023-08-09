@@ -1,47 +1,48 @@
-import { useState, useEffect } from 'react';
+const useGet = async (url) => {
+  try {
+    const res = await fetch(url, {
+      method: 'GET'
+    });
 
-function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-      setLoading(false);
-    }
-    fetchData();
-  }, [url]);
-
-  return { data, loading };
-}
-
-function usePost(url) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  async function postData(body) {
-    setLoading(true);
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
-      const data = await response.json();
-      setData(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-      setLoading(false);
-    }
+    return await res.json();
+  } catch (error) {
+    console.error(error);
   }
+};
 
-  return { data, loading, error, postData };
-}
+const usePost = async (url, newData, jwt) => {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: jwt,
+        withCredentials: true
+      },
+      body: JSON.stringify(newData)
+    });
 
-export { useFetch, usePost };
+    if (res.ok) {
+      return res;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const useDelete = async (url, jwt) => {
+  try {
+    const res = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        Authorization: jwt,
+        withCredentials: true
+      }
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { useGet, usePost, useDelete };

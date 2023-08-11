@@ -1,8 +1,9 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Home from './pages/Home/Home.jsx';
-import Login from './pages/Login/Login.jsx';
 import { useEffect, createContext, useMemo } from 'react';
 import useLocalStorage from './util/useLocalStorage.js';
+import Home from './pages/Home/Home.jsx';
+import Login from './pages/Login/Login.jsx';
+import SignUp from 'pages/SignUp/SignUp.jsx';
 
 export const userContext = createContext({
   setIsLoggedIn: () => {},
@@ -44,6 +45,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/join' element={<SignUp />} />
       </Routes>
     </userContext.Provider>
   );

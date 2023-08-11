@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
-// import { useState } from 'react';
-import useLoginLogic from '../../util/useLoginLogic';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useLoginLogic from '../../util/useLoginLogic';
 import MainImg from 'asset/logo192.png';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const initialInputs = {
@@ -11,7 +11,7 @@ function Login() {
     password: ''
   };
   const LOGIN_POST_URL = `${process.env.REACT_APP_URL}/login`;
-  const msg = 'User name and password cannot be empty.';
+  const msg = '아이디와 비밀번호를 채워주세요';
 
   const [inputs, onChange, onClick] = useLoginLogic(
     initialInputs,
@@ -27,11 +27,20 @@ function Login() {
     <Wrapper>
       <Container>
         <Wrapper>
-          <Logo src={MainImg} alt='MainImg' />
+          <LogoBox to='/'>
+            <Logo src={MainImg} alt='MainImg' />
+          </LogoBox>
         </Wrapper>
         <Wrapper>
-          <Input type='text' placeholder='아이디 입력' value={userIdentifier} onChange={onChange} />
           <Input
+            name='userIdentifier'
+            type='text'
+            placeholder='아이디 입력'
+            value={userIdentifier}
+            onChange={onChange}
+          />
+          <Input
+            name='password'
             type='password'
             placeholder='비밀번호 8자~20자'
             value={password}
@@ -72,6 +81,12 @@ const Container = styled.div`
   border-radius: 10px;
 `;
 
+const LogoBox = styled(Link)`
+  height: 100px;
+  width: 100px;
+  margin-bottom: -30px;
+`;
+
 const Logo = styled.img`
   height: 100px;
   width: 100px;
@@ -93,7 +108,7 @@ const LoginButton = styled.button`
   background-color: yellow;
   border-radius: 4px;
   font-size: 18px;
-  margin-top: 14px;
+  margin-top: 50px;
 `;
 
 const Google = styled(FontAwesomeIcon)`

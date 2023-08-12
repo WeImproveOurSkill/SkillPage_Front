@@ -7,8 +7,10 @@ import { checkPassword, checkId, checkEmail, checkPhoneNumber } from './checkPas
 function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key5, key6, key7) {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(initialInputs);
+
   //   const [usableId, setUsableId] = useState(false);
   //   const [auth, setAuth] = useState(false);
+
   const { setIsLoggedIn, setTokens } = useContext(userContext);
 
   const onChange = (e) => {
@@ -66,7 +68,8 @@ function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key
 
   const onClick = async (e) => {
     e.preventDefault();
-
+    const resultId = checkId(inputs.userIdentifier);
+    if (!resultId) return;
     if (
       inputs[key1] === '' ||
       inputs[key2] === '' ||
@@ -119,7 +122,7 @@ function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key
     }
   };
 
-  return [inputs, onChange, onClick];
+  return [inputs, onChange, onSubmit, clickCheckId, clickPhoneNumber, clickAuthPhoneNumber];
 }
 // , clickCheckId, clickPhoneNumber, clickAuthPhoneNumber
 export default useLoginLogic;

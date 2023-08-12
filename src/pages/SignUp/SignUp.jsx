@@ -13,10 +13,11 @@ function SignUp() {
     phoneNumber: '',
     phoneNumberCheck: ''
   };
-  const SIGNUP_POST_URL = `${process.env.REACT_APP_URL}/join`;
+  
+  const SIGNUP_POST_URL = `${process.env.REACT_APP_URL}/member1/join`;
   const msg = '모든 칸이 채워져야 합니다.';
 
-  const [inputs, onChange, onSubmit, clickCheckId, clickPhoneNumber, clickAuthPhoneNumber] =
+  const [inputs, onChange, onClick, clickCheckId, clickPhoneNumber, clickAuthPhoneNumber] =
     useLoginLogic(
       initialInputs,
       SIGNUP_POST_URL,
@@ -113,7 +114,9 @@ function SignUp() {
           <AuthButton onClick={clickAuthPhoneNumber}>확인</AuthButton>
         </InputBoxDown>
       </Container>
-      <LoginButton type='submit' onSubmit={onSubmit}>
+
+      <LoginButton type='submit' onClick={onClick}>
+
         회원가입
       </LoginButton>
     </Wrapper>

@@ -68,8 +68,7 @@ function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key
 
   const onClick = async (e) => {
     e.preventDefault();
-    const resultId = checkId(inputs.userIdentifier);
-    if (!resultId) return;
+    
     if (
       inputs[key1] === '' ||
       inputs[key2] === '' ||

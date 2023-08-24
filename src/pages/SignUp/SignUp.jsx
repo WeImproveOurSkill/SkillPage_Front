@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
-import useLoginLogic from '../../util/useLoginLogic';
+import useSignupLogic from '../../util/useSignupLogic';
 import MainImg from 'asset/logo192.png';
 
 function SignUp() {
@@ -13,12 +13,12 @@ function SignUp() {
     phoneNumber: '',
     phoneNumberCheck: ''
   };
-  
-  const SIGNUP_POST_URL = `${process.env.REACT_APP_URL}/member1/join`;
+
+  const SIGNUP_POST_URL = '/member1/join';
   const msg = '모든 칸이 채워져야 합니다.';
 
   const [inputs, onChange, onClick, clickCheckId, clickPhoneNumber, clickAuthPhoneNumber] =
-    useLoginLogic(
+    useSignupLogic(
       initialInputs,
       SIGNUP_POST_URL,
       msg,
@@ -116,7 +116,6 @@ function SignUp() {
       </Container>
 
       <LoginButton type='submit' onClick={onClick}>
-
         회원가입
       </LoginButton>
     </Wrapper>

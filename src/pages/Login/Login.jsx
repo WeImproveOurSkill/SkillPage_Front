@@ -10,7 +10,7 @@ function Login() {
     userIdentifier: '',
     password: ''
   };
-  const LOGIN_POST_URL = `${process.env.REACT_APP_URL}/login`;
+  const LOGIN_POST_URL = `/login`;
   const msg = '아이디와 비밀번호를 채워주세요';
 
   const [inputs, onChange, onClick] = useLoginLogic(

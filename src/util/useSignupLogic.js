@@ -4,7 +4,7 @@ import { userContext } from '../App';
 import { usePost } from './api';
 import { checkId, checkPassword, checkEmail, checkPhoneNumber } from './checkPassword';
 
-function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key5, key6, key7) {
+function useSignupLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key5, key6, key7) {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(initialInputs);
   //   const [usableId, setUsableId] = useState(false);
@@ -122,4 +122,4 @@ function useLoginLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key
 
   return [inputs, onChange, onClick];
 }
-export default useLoginLogic;
+export default useSignupLogic;

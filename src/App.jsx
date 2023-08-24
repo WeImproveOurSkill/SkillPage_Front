@@ -4,6 +4,7 @@ import useLocalStorage from './util/useLocalStorage.js';
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login.jsx';
 import SignUp from 'pages/SignUp/SignUp.jsx';
+import Cart from 'pages/Cart/Cart.jsx';
 
 export const userContext = createContext({
   setIsLoggedIn: () => {},
@@ -46,6 +47,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/join' element={<SignUp />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </userContext.Provider>
   );

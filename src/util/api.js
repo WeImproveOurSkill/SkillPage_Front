@@ -1,4 +1,4 @@
-const useGet = async (url) => {
+export const useGet = async (url) => {
   try {
     const res = await fetch(url, {
       method: 'GET'
@@ -10,7 +10,7 @@ const useGet = async (url) => {
   }
 };
 
-const usePost = async (url, newData, jwt) => {
+export const usePost = async (url, newData, jwt) => {
   try {
     const res = await fetch(url, {
       method: 'POST',
@@ -30,7 +30,47 @@ const usePost = async (url, newData, jwt) => {
   }
 };
 
-const useDelete = async (url, jwt) => {
+export const useImagePost = async (url, newData, jwt) => {
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'mutipart/form-data',
+        Authorization: jwt,
+        withCredentials: true
+      },
+      body: JSON.stringify(newData)
+    });
+
+    if (res.ok) {
+      return res;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const usePut = async (url, newData, jwt) => {
+  try {
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: jwt,
+        withCredentials: true
+      },
+      body: JSON.stringify(newData)
+    });
+
+    if (res.ok) {
+      return res;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const useDelete = async (url, jwt) => {
   try {
     const res = await fetch(url, {
       method: 'DELETE',
@@ -44,5 +84,3 @@ const useDelete = async (url, jwt) => {
     console.log(err);
   }
 };
-
-export { useGet, usePost, useDelete };

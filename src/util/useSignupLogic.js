@@ -1,21 +1,22 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { userContext } from '../App';
 import { usePost } from './api';
 import { checkId, checkPassword, checkEmail, checkPhoneNumber } from './checkPassword';
+import { useSelector } from 'react-redux';
 
 function useSignupLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, key5, key6, key7) {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState(initialInputs);
   //   const [usableId, setUsableId] = useState(false);
   //   const [auth, setAuth] = useState(false);
-  const { setIsLoggedIn, setTokens } = useContext(userContext); // 토큰 회원가입 문제시 setTokens 삭제
+  const setIsLoggedIn = useSelector((state) => state.auth.IsLoggedIn);
+  const setTokens = useSelector((state) => state.auth.tokens);
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
-
+  //   유효성 검사 로직
   //   const clickCheckId = async (e) => {
   //     e.preventDefault();
   //     const resultId = checkId(inputs.userIdentifier);
@@ -103,14 +104,13 @@ function useSignupLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, ke
     }
 
     const res = await usePost(url, inputs);
-    const accessToken = res.headers.get('Authorization'); // 토큰 회원가입 문제시 주석 처리
-    const refreshToken = res.headers.get('Refresh'); // 토큰 회원가입 문제시 주석 처리
+    const accessToken = res.headers.get('Authorization');
+    const refreshToken = res.headers.get('Refresh');
     if (!res) {
       // 에러 처리 로직
       return;
     }
     if (res.ok) {
-      // 토큰 회원가입 문제시 setTokens 주석 처리 (117줄까지)
       setTokens({
         accessToken,
         refreshToken
@@ -122,4 +122,5 @@ function useSignupLogic(initialInputs, url, alertMsg, key1, key2, key3, key4, ke
 
   return [inputs, onChange, onClick];
 }
+
 export default useSignupLogic;

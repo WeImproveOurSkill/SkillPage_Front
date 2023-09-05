@@ -3,8 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: [],
-    totalQuantity: 0
+    items: [
+      {
+        id: 'p1',
+        price: 600000,
+        title: 'My First Book'
+        // quantity: 1
+      },
+      {
+        id: 'p2',
+        price: 5000,
+        title: 'My Second Book'
+        // quantity: 1
+      }
+    ],
+    totalQuantity: 0,
+    isAllChecked: false
   },
   reducers: {
     addItemToCart(state, action) {
@@ -17,7 +31,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
-          name: newItem.title
+          title: newItem.title
         });
       } else {
         existingItem.quantity++;
@@ -30,10 +44,28 @@ const cartSlice = createSlice({
       state.totalQuantity--;
       if (existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);
+        // state.checkedItems = state.checkedItems.filter((item) => item.id !== id);
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
+    },
+    toggleItemCheckbox(state, action) {
+      const itemId = action.payload;
+      const item = state.items.find((item) => item.id === itemId);
+      if (item) {
+        item.isChecked = !item.isChecked;
+        state.isAllChecked = state.items.every((item) => item.isChecked);
+      }
+    },
+    toggleAllCheckbox(state) {
+      // 전체선택 상태 토글
+      state.isAllChecked = !state.isAllChecked;
+
+      // 모든 아이템의 isChecked를 전체선택 상태로 일괄 설정
+      state.items.forEach((item) => {
+        item.isChecked = state.isAllChecked;
+      });
     }
   }
 });

@@ -22,12 +22,12 @@
     "no-var": "warn",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
-    "react/prop-types": "warn",
     "react/jsx-pascal-case": "warn",
     "react/destructuring-assignment": "warn",
     "react/no-direct-mutation-state": "warn",
     "react/jsx-key": "warn",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "react/prop-types": "off"
   },
   "ignorePatterns": ["node_modules/"],
   "settings": {

@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 import MainImg from 'asset/logo192.png';
 import {
   faBars,
@@ -16,7 +17,9 @@ function Header() {
       <Box>
         <HeaderUp>
           <Menu icon={faBars} size='2x'></Menu>
-          <Logo src={MainImg} alt='MainImg'></Logo>
+          <Link to='/'>
+            <Logo src={MainImg} alt='MainImg'></Logo>
+          </Link>
           <Search>
             <SearchButton icon={faMagnifyingGlass}></SearchButton>
           </Search>
@@ -24,7 +27,9 @@ function Header() {
           <MyPage>
             <FaUser icon={faUser}></FaUser>
             <FaTruck icon={faTruck}></FaTruck>
-            <FaCartShopping icon={faCartShopping}></FaCartShopping>
+            <Link to='cart'>
+              <FaCartShopping icon={faCartShopping}></FaCartShopping>
+            </Link>
           </MyPage>
         </HeaderUp>
       </Box>

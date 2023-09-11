@@ -1,8 +1,6 @@
 export const useGet = async (url) => {
   try {
-    const res = await fetch(url, {
-      method: 'GET'
-    });
+    const res = await fetch(url);
 
     return await res.json();
   } catch (error) {
@@ -35,7 +33,7 @@ export const useImagePost = async (url, newData, jwt) => {
     const res = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'mutipart/form-data',
+        'Content-Type': 'multipart/form-data',
         Authorization: jwt,
         withCredentials: true
       },

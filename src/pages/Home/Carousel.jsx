@@ -55,7 +55,7 @@ function Carousel() {
 }
 
 const StyledSlider = styled(Slider)`
-  width: 1920px;
+  width: 1280px;
   height: 400px;
 
   .slick-slide {
@@ -63,7 +63,6 @@ const StyledSlider = styled(Slider)`
     width: 100%;
     height: 430px;
     z-index: 1;
-    border-bottom: 1px solid lightgray;
   }
 
   .slick-prev {
@@ -72,7 +71,7 @@ const StyledSlider = styled(Slider)`
     width: 38.5px;
     height: 30px;
     top: 90%;
-    left: 90%;
+    left: 88%;
     z-index: 1;
     padding-top: 2px;
     border-radius: 50% 0% 0% 50%;

@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
-import MainImg from 'asset/logo192.png';
 import {
   faBars,
   faMagnifyingGlass,
@@ -8,10 +7,13 @@ import {
   faCartShopping,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
-// import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MainImg from 'asset/logo192.png';
+import { useSelector } from 'react-redux';
 
 function Header() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   return (
     <Container>
       <Box>
@@ -25,8 +27,13 @@ function Header() {
           </Search>
           <Rank>실시간순위</Rank>
           <MyPage>
-            <FaUser icon={faUser}></FaUser>
-            <FaTruck icon={faTruck}></FaTruck>
+            {isLoggedIn ? (
+              <>
+                <FaUser icon={faUser} /> <FaTruck icon={faTruck} />
+              </>
+            ) : (
+              <Login to='login'>로그인</Login>
+            )}
             <Link to='cart'>
               <FaCartShopping icon={faCartShopping}></FaCartShopping>
             </Link>
@@ -67,7 +74,6 @@ const Box = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   border-bottom: 0.5px solid lightgray;
 `;
 
@@ -76,7 +82,7 @@ const HeaderUp = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1280px;
   height: 120px;
 `;
 
@@ -124,10 +130,19 @@ const MyPage = styled.div`
   width: 267px;
   display: flex;
   justify-content: space-around;
+  padding-bottom: 5px;
 `;
 
 const FaUser = styled(FontAwesomeIcon)`
   font-size: 2.3rem;
+`;
+
+const Login = styled(Link)`
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  font-weight: 500;
+  font-size: 24px;
 `;
 
 const FaTruck = styled(FontAwesomeIcon)`

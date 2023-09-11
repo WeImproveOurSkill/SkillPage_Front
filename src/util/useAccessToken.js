@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { userContext } from '../App.js';
+import { useSelector } from 'react-redux';
 
 function useAccessToken() {
-  const { tokens } = useContext(userContext);
+  const tokens = useSelector((state) => state.auth.tokens);
   const accessToken = tokens && tokens.accessToken;
   return accessToken;
 }

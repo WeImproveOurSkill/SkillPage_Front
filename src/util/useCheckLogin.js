@@ -1,10 +1,10 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userContext } from '../App';
 
 function useCheckLogin() {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(userContext);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {

@@ -113,8 +113,8 @@ function SignUp() {
           />
           <AuthButton onClick={clickAuthPhoneNumber}>확인</AuthButton>
         </InputBoxDown>
+        <Login to='/login'>로그인하기 {'>'} </Login>
       </Container>
-
       <LoginButton type='submit' onClick={onClick}>
         회원가입
       </LoginButton>
@@ -135,13 +135,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 460px;
-  height: 50vh;
+  height: 54vh;
+  min-height: 460px;
 `;
 
 const LogoBox = styled(Link)`
   height: 100px;
   width: 100px;
-  margin-bottom: -8vh;
 `;
 
 const Logo = styled.img`
@@ -170,7 +170,6 @@ const InputBox = styled.div`
   padding: 0px 10px 0px 45px;
   border: 1px solid lightgray;
   border-width: 0px 1px 1px 1px;
-  border: 1px solid lightgray;
 `;
 
 const Input = styled.input`
@@ -198,6 +197,14 @@ const AuthButton = styled.button`
   height: 40px;
   font-size: 15px;
   margin-right: -30px;
+`;
+
+const Login = styled(Link)`
+  margin-top: 1vh;
+  padding-right: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
 `;
 
 const LoginButton = styled.button`

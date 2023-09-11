@@ -26,12 +26,10 @@ function Login() {
   return (
     <Wrapper>
       <Container>
-        <Wrapper>
-          <LogoBox to='/'>
-            <Logo src={MainImg} alt='MainImg' />
-          </LogoBox>
-        </Wrapper>
-        <Wrapper>
+        <LogoBox to='/'>
+          <Logo src={MainImg} alt='MainImg' />
+        </LogoBox>
+        <InputWrapper>
           <Input
             name='userIdentifier'
             type='text'
@@ -46,16 +44,17 @@ function Login() {
             value={password}
             onChange={onChange}
           />
-          <LoginButton type='submit' onClick={onClick}>
-            로그인
-          </LoginButton>
-        </Wrapper>
-        <Wrapper>
-          <Google icon={faGoogle} />
-        </Wrapper>
+          <FindContainer>
+            <div>아이디찾기</div>
+            <div>비밀번호찾기</div>
+            <SignUp to='/join'>회원가입</SignUp>
+          </FindContainer>
+        </InputWrapper>
+        <LoginButton type='submit' onClick={onClick}>
+          로그인
+        </LoginButton>
+        <Google icon={faGoogle} />
       </Container>
-      <div>아이디 비밀번호찾기 회원가입</div>
-      <div>Copyright © 2019 MANGO Co.,Ltd. All Rights Reserved.</div>
     </Wrapper>
   );
 }
@@ -64,8 +63,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  /* height: 100%; */
+  justify-content: center;
+  min-height: 100%;
 `;
 
 const Container = styled.div`
@@ -73,7 +72,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 500px;
+  height: 600px;
   width: 481px;
   margin-top: 100px;
   padding: 0px 50px 0px 50px;
@@ -82,14 +81,20 @@ const Container = styled.div`
 `;
 
 const LogoBox = styled(Link)`
+  padding-top: 20px;
   height: 100px;
   width: 100px;
-  margin-bottom: -30px;
 `;
 
 const Logo = styled.img`
   height: 100px;
   width: 100px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Input = styled.input`
@@ -102,18 +107,27 @@ const Input = styled.input`
   margin-bottom: 1px;
 `;
 
+const FindContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  padding-top: 20px;
+`;
+
 const LoginButton = styled.button`
   height: 51px;
   width: 396px;
   background-color: yellow;
   border-radius: 4px;
   font-size: 18px;
-  margin-top: 50px;
 `;
 
 const Google = styled(FontAwesomeIcon)`
   font-size: 1.5rem;
 `;
+
+const SignUp = styled(Link)``;
+
 export default Login;
 
 // const [userIdentifier, setUserIdentifier] = useState('');
